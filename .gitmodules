@@ -1,0 +1,3 @@
+[submodule "hugoBasicExample"]
+	path = hugoBasicExample
+	url = https://github.com/gohugoio/hugoBasicExample
