@@ -4,11 +4,11 @@ jobs:
   build_site:
     runs-on: nixos-latest
     steps:
-    - id: get env setup_checkout
+    - id: get-env-setup_checkout
       uses: actions/checkout@v3
-    - id: get env setup_nix-shell_setup
+    - id: get-env-setup_nix-shell_setup
       uses: cachix/install-nix-action@v18
-    - id: build site
+    - id: build-site
       uses: workflow/nix-shell-action@v3
       with:
         script: "cd sitebuilder && bash buildsite.sh" 
