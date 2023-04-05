@@ -11,4 +11,4 @@ jobs:
     - id: build-site
       uses: workflow/nix-shell-action@v3
         with:
-        script: "cd sitebuilder && bash buildsite.sh" 
+          script: "cd sitebuilder && bash buildsite.sh" 
