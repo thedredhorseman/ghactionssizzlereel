@@ -1,0 +1,28 @@
+name: GitHub Actions Demo (Auto-check changes to codebase)
+on:
+  pull_request:
+    branches:
+    - master
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+    - id: get-env-setup_checkout
+      uses: actions/checkout@v3
+    - id: get-env-setup_nix-shell_setup
+      uses: cachix/install-nix-action@v18
+    - id: validate-nix-shell
+      uses: workflow/nix-shell-action@v3
+      with:
+        packages: alejandra
+        script: "alejandra shell.nix"
+    - id: validate-sitebuilder-script
+      uses: workflow/nix-shell-action@v3
+      with:
+        packages: shellcheck
+        script: "shellcheck sitebuilder/buildsite.sh" 
+    - id: save-site
+      uses: actions/upload-artifact@v3
+      with:
+        name: index.html
+        path: sitebuilder/output.html 
