@@ -1,6 +1,5 @@
-{ pkgs ? import <nixpkgs> {} }:
-  pkgs.mkShell {
-    # nativeBuildInputs is usually what you want -- tools you need to run
-    nativeBuildInputs = [ pkgs.pandoc pkgs.act ];
+{pkgs ? import <nixpkgs> {}}:
+pkgs.mkShell {
+  # nativeBuildInputs is usually what you want -- tools you need to run
+  nativeBuildInputs = [pkgs.pandoc pkgs.act pkgs.alejandra pkgs.shellcheck];
 }
-

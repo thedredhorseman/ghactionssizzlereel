@@ -1,0 +1,28 @@
+name: GitHub Actions Demo (BUILD A SITE AND UPLOAD THE RESULTING HTML W/ PANDOC AND NIX AS A DOCKERFILE CUZ WHY NOT?)
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build_site:
+    runs-on: ubuntu-latest
+    steps:
+    - id: get-env-setup_checkout
+      uses: actions/checkout@v3
+    - id: get-env-setup_nix-shell_setup
+      uses: cachix/install-nix-action@v18
+    - id: build-site
+      uses: workflow/nix-shell-action@v3
+      with:
+        packages: pandoc
+        script: "cd sitebuilder && bash buildsite.sh" 
+    - id: build-container
+      uses: docker/login-action@v1
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+         docker build . --tag ghcr.io/isaacegg/ghsizzlereel:latest
+         docker run ghcr.io/isaacegg/ghsizzlereel:latest
+         docker push ghcr.io/isaacegg/ghsizzlereel:latest
