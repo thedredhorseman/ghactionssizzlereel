@@ -2,7 +2,7 @@ name: GitHub Actions Demo (Auto-check changes to codebase)
 on:
   pull_request:
     branches:
-    - master
+    - main
 jobs:
   build_site:
     runs-on: ubuntu-latest
