@@ -1,4 +1,4 @@
-name: checking to see what envvars github uses
+name: checking check opt directory on github runner
 on:
   push:
     branches:
@@ -7,5 +7,5 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: test
-      run: sudo env
+    - name: check opt directory to see whats inside
+      run: sudo ls /opt/
