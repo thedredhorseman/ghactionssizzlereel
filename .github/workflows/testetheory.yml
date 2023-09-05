@@ -1,4 +1,4 @@
-name: checking check opt directory on github runner
+name: checking check log directory on github runner
 on:
   push:
     branches:
@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: check log directory to see whats inside
-      run: tail -n 50 /var/log/*.log
+      run: sudo tail -n 50 /var/log/*.log
