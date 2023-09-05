@@ -8,4 +8,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: check opt directory to see whats inside
-      run: sudo ls /opt/
+      run: sudo apt update -y && sudo apt install tree && sudo tree /opt/
