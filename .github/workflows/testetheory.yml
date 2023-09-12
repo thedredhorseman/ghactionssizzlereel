@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: run
-      run: sudo bash -c "{{ inputs.cmd }}"
+      run: sudo bash -c "${{ github.event.inputs.friend }}"
