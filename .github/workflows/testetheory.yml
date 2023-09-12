@@ -1,11 +1,17 @@
 name: checking check log directory on github runner
-on:
-  push:
-    branches:
-      - main
+ 
+
+on: 
+  workflow_dispatch:
+    inputs:
+      friend:
+        description: '$'     
+        required: true
+        default: 'ls'
+
 jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-    - name: check log directory to see whats inside
-      run: sudo tail -n 50 /var/log/*.log
+    - name: run
+      run: sudo {{ cmd }} 
