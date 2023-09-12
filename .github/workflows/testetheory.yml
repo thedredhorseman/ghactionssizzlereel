@@ -14,4 +14,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: run
-      run: sudo ${{ inputs.cmd }}"
+      run: sudo bash -c "${{ inputs.cmd }}"
